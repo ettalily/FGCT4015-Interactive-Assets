@@ -65,6 +65,11 @@ int main(void)
         EndDrawing();
     }
 
+    UnloadTexture(sprite);
+    UnloadSound(walkSound);
+    UnloadSound(backgroundMusic);
+    
+    CloseAudioDevice();
     CloseWindow();
 
     return 0;
