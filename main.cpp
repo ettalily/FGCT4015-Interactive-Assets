@@ -16,11 +16,11 @@ void UpdateWalk(int *timer, int *currentFrame, Sound *walkSound)
     *timer = 0;
     *currentFrame += 1;
 
-    if (*currentFrame == FRAME_COUNT)
-    {
-        *currentFrame = 0;
-        PlaySound(*walkSound);
-    }
+    if (*currentFrame != FRAME_COUNT)
+        return;
+
+    *currentFrame = 0;
+    PlaySound(*walkSound);
 }
 
 int main(void)
@@ -30,10 +30,11 @@ int main(void)
     SetTargetFPS(60);
 
     Texture2D sprite = LoadTexture("./assets/spritesheet.png");
-    int timer = 0;
-    int currentFrame = 0;
     Sound walkSound = LoadSound("./assets/walk.wav");
     Sound backgroundMusic = LoadSound("./assets/backgroundmusic.mp3");
+
+    int timer = 0;
+    int currentFrame = 0;
 
     while (!WindowShouldClose())
     {
